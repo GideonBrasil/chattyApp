@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NavBar from "./NavBar.jsx";
 import Message from "./Message.jsx";
 import ChatBar from "./ChatBar.jsx";
-import Messages from "./MessageList.jsx";
+import messages from "./messages.json";
 
 function Loading() {
   return (
@@ -19,7 +19,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       loading: true,
-      messages: Messages,
+      messages,
       currentUser: ""
     };
   }
@@ -30,12 +30,16 @@ export default class App extends Component {
     }, 2000);
   }
   render() {
+    const allMessages = this.state.messages.map(message => (
+      <Message key={message.id} message={message} />
+    ));
+
     const asyncSection = this.state.loading ? (
       <Loading />
     ) : (
       <div>
         <NavBar />
-        <Message />
+        {allMessages}
         <ChatBar currentUser={this.state.currentUser} />
       </div>
     );

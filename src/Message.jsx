@@ -1,17 +1,14 @@
 import React from "react";
-import Messages from "./MessageList.jsx";
 
-function Message(props) {
+function Message({ message: { content, username } }) {
   return (
     <main className="messages">
       <div className="message">
-        <span className="message-username">Anonymous1</span>
-        <span className="message-content">
-          I won't be impressed with technology until I can download food.
-        </span>
+        <span className="message-username">{username}</span>
+        <span className="message-content">{content}</span>
       </div>
       <div className="message system">
-        Anonymous1 changed their name to nomnom.
+        (Notifications) Anonymous1 changed their name to nomnom.
       </div>
     </main>
   );
