@@ -21,6 +21,7 @@ export default class App extends Component {
       messages: String,
       currentUser: String
     };
+    // this.addCurrentUser = this.addCurrentUser.bind(this);
   }
 
   componentDidMount() {
@@ -35,7 +36,7 @@ export default class App extends Component {
       <div>
         <NavBar />
         <Message />
-        <ChatBar />
+        <ChatBar addCurrentUser={this.currentUser} />
       </div>
     );
     return <div>{asyncSection}</div>;
