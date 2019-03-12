@@ -1,4 +1,4 @@
-let Messages = [
+let messages = [
   {
     type: "incomingMessage",
     content: "I won't be impressed with technology until I can download food.",

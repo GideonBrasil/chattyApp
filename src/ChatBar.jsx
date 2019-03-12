@@ -6,7 +6,8 @@ export default class ChatBar extends Component {
       <footer className="chatbar">
         <input
           className="chatbar-username"
-          placeholder="Your Name (Optional)"
+          placeholder="Type name here"
+          defaultValue={this.props.currentUser}
         />
         <input
           className="chatbar-message"

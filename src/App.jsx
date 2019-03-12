@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NavBar from "./NavBar.jsx";
 import Message from "./Message.jsx";
 import ChatBar from "./ChatBar.jsx";
+import Messages from "./MessageList.jsx";
 
 function Loading() {
   return (
@@ -18,10 +19,9 @@ export default class App extends Component {
     super(props);
     this.state = {
       loading: true,
-      messages: String,
-      currentUser: String
+      messages: Messages,
+      currentUser: ""
     };
-    // this.addCurrentUser = this.addCurrentUser.bind(this);
   }
 
   componentDidMount() {
@@ -36,7 +36,7 @@ export default class App extends Component {
       <div>
         <NavBar />
         <Message />
-        <ChatBar addCurrentUser={this.currentUser} />
+        <ChatBar currentUser={this.state.currentUser} />
       </div>
     );
     return <div>{asyncSection}</div>;
