@@ -1,34 +1,41 @@
 [{
     "type": "incomingMessage",
     "content": "I won't be impressed with technology until I can download food.",
-    "username": "Anonymous1"
+    "username": "Anonymous1",
+    "id": "A12345678Z"
   },
   {
     "type": "incomingNotification",
-    "content": "Anonymous1 changed their name to nomnom"
+    "content": "Anonymous1 changed their name to nomnom",
+    "id": "B12345678Z"
   },
   {
     "type": "incomingMessage",
     "content": "I wouldn't want to download Kraft Dinner. I'd be scared of cheese packet loss.",
-    "username": "Anonymous2"
+    "username": "Anonymous2",
+    "id": "C"
   },
   {
     "type": "incomingMessage",
     "content": "...",
-    "username": "nomnom"
+    "username": "nomnom",
+    "id": "D12345678Z"
   },
   {
     "type": "incomingMessage",
     "content": "I'd love to download a fried egg, but I'm afraid encryption would scramble it",
-    "username": "Anonymous2"
+    "username": "Anonymous2",
+    "id": "E12345678Z"
   },
   {
     "type": "incomingMessage",
     "content": "This isn't funny. You're not funny",
-    "username": "nomnom"
+    "username": "nomnom",
+    "id": "F12345678Z"
   },
   {
     "type": "incomingNotification",
-    "content": "Anonymous2 changed their name to NotFunny"
+    "content": "Anonymous2 changed their name to NotFunny",
+    "id": "G12345678Z"
   }
 ]
