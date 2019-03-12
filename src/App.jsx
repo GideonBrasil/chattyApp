@@ -3,7 +3,7 @@ import NavBar from "./NavBar.jsx";
 import Message from "./Message.jsx";
 import ChatBar from "./ChatBar.jsx";
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <div>
@@ -14,4 +14,3 @@ class App extends Component {
     );
   }
 }
-export default App;
