@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import NavBar from "./NavBar.jsx";
+import Message from "./Message.jsx";
 
 class App extends Component {
   render() {
-    return (
-      <h1>Hello React :)</h1>
-    );
+    return <NavBar />;
   }
 }
 export default App;
