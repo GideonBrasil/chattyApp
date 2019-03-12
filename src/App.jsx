@@ -4,7 +4,10 @@ import Message from "./Message.jsx";
 
 class App extends Component {
   render() {
-    return <NavBar />;
+    return (
+    <NavBar />
+    <Message />
+    );
   }
 }
 export default App;
