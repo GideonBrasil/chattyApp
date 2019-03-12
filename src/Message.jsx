@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import messages from "./MessageList.jsx";
+import Messages from "./MessageList.jsx";
 
 export default class Message extends Component {
   render() {
