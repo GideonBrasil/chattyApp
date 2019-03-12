@@ -16,7 +16,11 @@ function Loading() {
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { loading: true };
+    this.state = {
+      loading: true,
+      messages: String,
+      currentUser: String
+    };
   }
 
   componentDidMount() {
