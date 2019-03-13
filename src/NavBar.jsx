@@ -1,6 +1,6 @@
 import React from "react";
 
-function NavBar(props) {
+function NavBar() {
   return (
     <nav className="navbar">
       <a href="/" className="navbar-brand">

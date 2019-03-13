@@ -8,7 +8,7 @@ function Message({ message: { content, username } }) {
         <span className="message-content">{content}</span>
       </div>
       <div className="message system">
-        (Notifications) Anonymous1 changed their name to nomnom.
+        {/* (Notifications) Anonymous1 changed their name to nomnom. */}
       </div>
     </main>
   );
