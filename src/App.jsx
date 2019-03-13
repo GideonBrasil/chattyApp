@@ -37,6 +37,7 @@ export default class App extends Component {
       messages: newMessages,
       currentUser: this.state.currentUser
     });
+    this.componentDidMount = this.componentDidMount.bind(this);
   };
 
   changeUsername = evt => this.setState({ currentUser: evt.target.value });
@@ -45,9 +46,19 @@ export default class App extends Component {
     this.socket = new WebSocket("ws://localhost:3001");
 
     this.socket.onopen = () => {
-      this.socket.send(
-        "Here's some text that the server is urgently awaiting!"
-      );
+      // this.socket.send(
+      //   "Here's some text that the server is urgently awaiting!"
+      // );
+      // Construct a msg object containing the data the server needs to process the message from the chat client.
+      var newMsg = {
+        type: "sendMessage",
+        content: "Hi",
+        username: "gideon",
+        id: 123
+      };
+
+      this.socket.send(JSON.stringify(newMsg));
+
       console.log("Connected to server. We got dis!");
     };
 

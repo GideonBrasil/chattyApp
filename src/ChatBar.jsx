@@ -19,15 +19,11 @@ function ChatBar({ addNewMessage, currentUser, handleChangeUsername }) {
         onChange={handleChangeUsername}
         value={currentUser}
       />
-      {/* <form onSubmit={newMessageForm} style={{ flex: 8 }}> */}
       <input
         onKeyPress={newMessageForm}
         className="chatbar-message"
-        style={{ width: "97%" }}
-        name="chatBarUsername"
         placeholder="Type a message and hit ENTER"
       />
-      {/* </form> */}
     </footer>
   );
 }
