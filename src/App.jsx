@@ -42,6 +42,15 @@ export default class App extends Component {
   changeUsername = evt => this.setState({ currentUser: evt.target.value });
 
   componentDidMount() {
+    this.socket = new WebSocket("ws://localhost:3001");
+
+    this.socket.onopen = () => {
+      this.socket.send(
+        "Here's some text that the server is urgently awaiting!"
+      );
+      console.log("Connected to server. We got dis!");
+    };
+
     setTimeout(() => {
       // Add a new message to the list of messages in the data store
       const newMessage = {
