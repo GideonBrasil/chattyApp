@@ -9,15 +9,17 @@ const handleSubmitCreator = callback => event => {
   }
 };
 
-function ChatBar({ addNewMessage, currentUser, handleChangeUsername }) {
+function ChatBar({ currentUser, addNewMessage, handleChangeUsername }) {
   const newMessageForm = handleSubmitCreator(addNewMessage);
+  // const newNotificationForm = handleSubmitCreatorUserName(addNewNotification);
   return (
     <footer className="chatbar">
       <input
         className="chatbar-username"
-        placeholder="Type name here"
-        onChange={handleChangeUsername}
-        value={currentUser}
+        // onKeyPress={newNotificationForm}
+        placeholder="Type your name here"
+        defaultValue={currentUser}
+        onKeyUp={handleChangeUsername}
       />
       <input
         onKeyPress={newMessageForm}

@@ -27,6 +27,17 @@ wss.on('connection', (ws) => {
     ws.on('message', (message) => {
         let newMessage = JSON.parse(message);
         newMessage.id = uuid();
+        console.log('newMessage:', newMessage)
+        switch (newMessage.type) {
+            case "postNotification":
+                newMessage.type = "incomingNotification";
+                break;
+            case 'postMessage':
+                newMessage.type = "incomingMessage";
+                break;
+            default:
+                throw new Error("Unknown event type " + newMessage.type);
+        }
         wss.clients.forEach(client => {
             if (client.readyState === WebSockets.OPEN) {
                 client.send(JSON.stringify(newMessage))
