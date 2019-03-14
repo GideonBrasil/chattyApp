@@ -21,9 +21,18 @@ export default class App extends Component {
       messages: [],
       currentUser: "Anonymous"
     };
-    this.addNewMessage = this.addNewMessage.bind(this);
+    this.handleSubmitCreator = this.handleSubmitCreator.bind(this);
     this.addNewNotification = this.addNewNotification.bind(this);
   }
+
+  handleSubmitCreator = event => {
+    if (event.key == "Enter") {
+      event.preventDefault();
+      const newMessageInput = event.target;
+      this.addNewMessage(newMessageInput.value);
+      newMessageInput.value = "";
+    }
+  };
 
   addNewMessage(content) {
     const newMessage = {
@@ -99,7 +108,7 @@ export default class App extends Component {
         {allMessages}
         <ChatBar
           currentUser={this.state.currentUser}
-          addNewMessage={this.addNewMessage}
+          handleSubmitCreator={this.handleSubmitCreator}
           handleChangeUsername={this.changeUsername}
         />
       </div>

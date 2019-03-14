@@ -1,17 +1,6 @@
 import React from "react";
 
-const handleSubmitCreator = callback => event => {
-  if (event.key == "Enter") {
-    event.preventDefault();
-    const newMessageInput = event.target;
-    callback(newMessageInput.value);
-    newMessageInput.value = "";
-  }
-};
-
-function ChatBar({ currentUser, addNewMessage, handleChangeUsername }) {
-  const newMessageForm = handleSubmitCreator(addNewMessage);
-  // const newNotificationForm = handleSubmitCreatorUserName(addNewNotification);
+function ChatBar({ currentUser, handleSubmitCreator, handleChangeUsername }) {
   return (
     <footer className="chatbar">
       <input
@@ -22,7 +11,7 @@ function ChatBar({ currentUser, addNewMessage, handleChangeUsername }) {
         onKeyUp={handleChangeUsername}
       />
       <input
-        onKeyPress={newMessageForm}
+        onKeyPress={handleSubmitCreator}
         className="chatbar-message"
         placeholder="Type a message and hit ENTER"
       />
