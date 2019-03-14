@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import NavBar from "./NavBar.jsx";
 import Message from "./Message.jsx";
 import ChatBar from "./ChatBar.jsx";
-import messages from "./messages.json";
 
 function Loading() {
   return (
@@ -19,47 +18,33 @@ export default class App extends Component {
     super(props);
     this.state = {
       loading: true,
-      messages,
+      messages: [],
       currentUser: ""
     };
-    // this.addNewMessage = this.addNewMessage.bind(this);
+    this.addNewMessage = this.addNewMessage.bind(this);
   }
 
-  addNewMessage = content => {
-    const oldMssage = this.state.messages;
+  addNewMessage(content) {
+    // const oldMssage = this.state.messages;
     const newMessage = {
       username: this.state.currentUser,
-      content,
-      id: 1567890
+      content
     };
-    const newMessages = [...oldMssage, newMessage];
-    this.setState({
-      messages: newMessages,
-      currentUser: this.state.currentUser
-    });
-    this.componentDidMount = this.componentDidMount.bind(this);
-  };
+
+    this.socket.send(JSON.stringify(newMessage));
+  }
 
   changeUsername = evt => this.setState({ currentUser: evt.target.value });
 
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001");
 
-    this.socket.onopen = () => {
-      // this.socket.send(
-      //   "Here's some text that the server is urgently awaiting!"
-      // );
-      // Construct a msg object containing the data the server needs to process the message from the chat client.
-      var newMsg = {
-        type: "sendMessage",
-        content: "Hi",
-        username: "gideon",
-        id: 123
-      };
-
-      this.socket.send(JSON.stringify(newMsg));
-
-      console.log("Connected to server. We got dis!");
+    this.socket.onmessage = event => {
+      let objectMessage = JSON.parse(event.data);
+      const newMessages = this.state.messages.concat(objectMessage);
+      this.setState({
+        messages: newMessages
+      });
     };
 
     setTimeout(() => {
