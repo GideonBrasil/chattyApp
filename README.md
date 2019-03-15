@@ -4,6 +4,8 @@ Chatty App allows users to communicate with each other in real time without havi
 
 ## Sneak Peak
 
+- There are tons of cool people on Chatty and gifs flying around.
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository to your local machine.
