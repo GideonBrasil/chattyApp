@@ -20,6 +20,7 @@ export default class App extends Component {
       loading: true,
       messages: [],
       clients: 0,
+      color: "",
       currentUser: "Anonymous"
     };
     this.handleSubmitCreator = this.handleSubmitCreator.bind(this);
@@ -69,11 +70,13 @@ export default class App extends Component {
 
     this.socket.onmessage = event => {
       let objectMessage = JSON.parse(event.data);
+      console.log("objectMessage:", objectMessage);
 
       if (objectMessage.type) {
         const newMessages = this.state.messages.concat(objectMessage);
         this.setState({
-          messages: newMessages
+          messages: newMessages,
+          color: objectMessage.color
         });
       } else {
         this.setState({
@@ -100,7 +103,13 @@ export default class App extends Component {
         {this.state.messages.map(message => {
           switch (message.type) {
             case "incomingMessage":
-              return <Message key={message.id} message={message} />;
+              return (
+                <Message
+                  key={message.id}
+                  message={message}
+                  color={this.state.color}
+                />
+              );
               break;
             case "incomingNotification":
               return <Notification key={message.id} message={message} />;

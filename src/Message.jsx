@@ -1,10 +1,12 @@
 import React from "react";
 
-export function Message({ message: { content, username } }) {
+export function Message({ message: { content, username, color } }) {
   return (
     <main className="messages">
       <div className="message">
-        <span className="message-username">{username}</span>
+        <span className="message-username" style={{ color }}>
+          {username}
+        </span>
         <span className="message-content">{content}</span>
       </div>
     </main>
