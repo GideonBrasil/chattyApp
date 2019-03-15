@@ -19,6 +19,7 @@ const wss = new SocketServer({
     server
 });
 
+// set up username color array
 let counter = 0;
 var colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
     '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
@@ -36,17 +37,23 @@ var colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
 // When a client connects they are assigned a socket, represented by
 // the ws parameter in the callback.
 wss.on('connection', (ws) => {
+    // username color logic
     counter++
     ws.uniqueColor = colorArray[counter % 50]
+
+    // count connected users and send value to clients
     wss.clients.forEach(client => {
         if (client.readyState === WebSockets.OPEN) {
             client.send(JSON.stringify(wss.clients.size))
         }
     });
     console.log('Client connected');
+
+    //receive data
     ws.on('message', (message) => {
         let newMessage = JSON.parse(message);
         newMessage.id = uuid();
+        //check messages received and decide what to do with it
         switch (newMessage.type) {
             case "postNotification":
                 newMessage.type = "incomingNotification";
@@ -69,6 +76,7 @@ wss.on('connection', (ws) => {
     // Set up a callback for when a client closes the socket. This usually means they closed their browser.
     ws.on('close', () => {
         console.log('Client disconnected');
+        //count connected users when client closes app and send value to all clients
         wss.clients.forEach(client => {
             if (client.readyState === WebSockets.OPEN) {
                 client.send(JSON.stringify(wss.clients.size))

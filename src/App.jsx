@@ -3,6 +3,7 @@ import NavBar from "./NavBar.jsx";
 import { Message, Notification } from "./Message.jsx";
 import ChatBar from "./ChatBar.jsx";
 
+//loading function for the initial loading of the app
 function Loading() {
   return (
     <nav className="navbar">
@@ -13,6 +14,7 @@ function Loading() {
   );
 }
 
+// main parent class that renders all components
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +29,7 @@ export default class App extends Component {
     this.addNewNotification = this.addNewNotification.bind(this);
   }
 
+  //handles events for message input
   handleSubmitCreator = event => {
     if (event.key == "Enter") {
       event.preventDefault();
@@ -56,6 +59,7 @@ export default class App extends Component {
     this.socket.send(JSON.stringify(newNotification));
   }
 
+  //handles events and change username from the username input
   changeUsername = evt => {
     if (evt.keyCode === 13) {
       const oldUser = this.state.currentUser;
@@ -65,6 +69,7 @@ export default class App extends Component {
     }
   };
 
+  //waits for the DOM to load before loading virtual DOM
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001");
 
@@ -94,6 +99,7 @@ export default class App extends Component {
     }, 1500);
   }
 
+  //renders all the components onto the index.html skeleton page
   render() {
     const asyncSection = this.state.loading ? (
       <Loading />
@@ -101,6 +107,7 @@ export default class App extends Component {
       <div>
         <NavBar clientCount={this.state.clients} />
         {this.state.messages.map(message => {
+          // deals with incoming messages and notifications
           switch (message.type) {
             case "incomingMessage":
               return (
