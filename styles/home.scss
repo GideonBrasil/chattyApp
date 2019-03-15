@@ -4,6 +4,7 @@ h1 {
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400i,600i');
 
 body {
   background: white;
@@ -83,7 +84,8 @@ body {
   color: inherit;
   display: block;
   float: left;
-  font-weight: 700;
+  font-weight: 900;
+  font-family: 'IBM Plex Serif', serif;
   font-size: 28px;
   height: 60px;
   line-height: 60px;
