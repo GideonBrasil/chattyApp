@@ -4,7 +4,7 @@ Chatty App allows users to communicate with each other in real time without havi
 
 ## Sneak Peak
 
-(https://github.com/GideonBrasil/chattyApp/blob/master/docs/chatty.gif?raw=true)
+!["Chatty APP"](https://github.com/GideonBrasil/chattyApp/blob/master/docs/chatty.gif?raw=true)
 
 - There are tons of cool people on Chatty and gifs flying around.
 
