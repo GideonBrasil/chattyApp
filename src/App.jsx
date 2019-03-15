@@ -19,6 +19,7 @@ export default class App extends Component {
     this.state = {
       loading: true,
       messages: [],
+      clients: 0,
       currentUser: "Anonymous"
     };
     this.handleSubmitCreator = this.handleSubmitCreator.bind(this);
@@ -69,11 +70,16 @@ export default class App extends Component {
     this.socket.onmessage = event => {
       let objectMessage = JSON.parse(event.data);
 
-      const newMessages = this.state.messages.concat(objectMessage);
-      this.setState({
-        messages: newMessages
-      });
-      console.log("messages in array: ", newMessages);
+      if (objectMessage.type) {
+        const newMessages = this.state.messages.concat(objectMessage);
+        this.setState({
+          messages: newMessages
+        });
+      } else {
+        this.setState({
+          clients: objectMessage
+        });
+      }
     };
   }
 
@@ -86,26 +92,24 @@ export default class App extends Component {
   }
 
   render() {
-    const allMessages = this.state.messages.map(message => {
-      switch (message.type) {
-        case "incomingMessage":
-          return <Message key={message.id} message={message} />;
-          break;
-        case "incomingNotification":
-          return <Notification key={message.id} message={message} />;
-          break;
-        default:
-          console.error("You shouldn't be sending messages here");
-          break;
-      }
-    });
-
     const asyncSection = this.state.loading ? (
       <Loading />
     ) : (
       <div>
-        <NavBar />
-        {allMessages}
+        <NavBar clientCount={this.state.clients} />
+        {this.state.messages.map(message => {
+          switch (message.type) {
+            case "incomingMessage":
+              return <Message key={message.id} message={message} />;
+              break;
+            case "incomingNotification":
+              return <Notification key={message.id} message={message} />;
+              break;
+            default:
+              console.error("You shouldn't be sending messages here", message);
+              break;
+          }
+        })}
         <ChatBar
           currentUser={this.state.currentUser}
           handleSubmitCreator={this.handleSubmitCreator}
