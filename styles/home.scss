@@ -15,7 +15,7 @@ body {
 }
 
 .chatbar {
-  background: tomato;
+  background: #333333;
   border-top: 1px solid black;
   bottom: 0;
   display: flex;
@@ -70,7 +70,7 @@ body {
 }
 
 .navbar {
-  background: tomato;
+  background: #333333;
   border-bottom: 1px solid black;
   height: 60px;
   left: 0;
@@ -81,7 +81,7 @@ body {
 }
 
 .navbar-brand {
-  color: inherit;
+  color: hsl(0, 79%, 72%);
   display: block;
   float: left;
   font-weight: 900;
@@ -96,4 +96,10 @@ body {
 .clientCounter {
   font-size: 1.4em;
   float: right;
+}
+
+img {
+  max-width: 60%;
+  border-radius: 25px;
+  display: flex;
 }
