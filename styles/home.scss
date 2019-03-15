@@ -7,7 +7,7 @@ h1 {
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400i,600i');
 
 body {
-  background: white;
+  background-image: url("https://wallup.net/wp-content/uploads/2018/09/27/470347-abstract-art-colorful-colors-design-illustration-light-theme.jpg");
   color: black;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -33,6 +33,7 @@ body {
   line-height: 40px;
   margin: 5px;
   padding: 0 9px;
+  background-color: hsl(180, 65%, 81%);
 }
 
 .chatbar-message {
@@ -81,7 +82,7 @@ body {
 }
 
 .navbar-brand {
-  color: hsl(0, 79%, 72%);
+  color: hsl(180, 100%, 50%);
   display: block;
   float: left;
   font-weight: 900;
@@ -94,6 +95,7 @@ body {
 }
 
 .clientCounter {
+  color: hsl(180, 100%, 50%);
   font-size: 1.4em;
   float: right;
 }
