@@ -5,7 +5,6 @@ function ChatBar({ currentUser, handleSubmitCreator, handleChangeUsername }) {
     <footer className="chatbar">
       <input
         className="chatbar-username"
-        // onKeyPress={newNotificationForm}
         placeholder="Type your name here"
         defaultValue={currentUser}
         onKeyUp={handleChangeUsername}
