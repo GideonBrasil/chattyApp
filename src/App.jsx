@@ -116,10 +116,8 @@ export default class App extends Component {
                   color={this.state.color}
                 />
               );
-              break;
             case 'incomingNotification':
               return <Notification key={message.id} message={message} />;
-              break;
             default:
               console.error('You shouldn't be sending messages here', message);
               break;
