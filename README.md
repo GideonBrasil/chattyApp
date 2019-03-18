@@ -21,6 +21,8 @@ Chatty App allows users to communicate with each other in real time without havi
 
 ## Dependencies
 
+#### Client
+
 - babel-core
 - babel-loader
 - babel-preset-es2015
@@ -37,6 +39,10 @@ Chatty App allows users to communicate with each other in real time without havi
 - webpack-dev-server
 - react
 - react-dom
+- prop-types
+
+#### Server
+
 - uuid
 - express
 - ws
