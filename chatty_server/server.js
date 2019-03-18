@@ -47,15 +47,15 @@ wss.on('connection', (ws) => {
         newMessage.id = uuid();
         //check messages received and decide what to do with it
         switch (newMessage.type) {
-            case "postNotification":
-                newMessage.type = "incomingNotification";
+            case 'postNotification':
+                newMessage.type = 'incomingNotification';
                 break;
             case 'postMessage':
-                newMessage.type = "incomingMessage";
+                newMessage.type = 'incomingMessage';
                 newMessage.color = ws.uniqueColor
                 break;
             default:
-                throw new Error("Unknown event type " + newMessage.type);
+                throw new Error('Unknown event type ' + newMessage.type);
         }
         wss.clients.forEach(client => {
             if (client.readyState === WebSockets.OPEN) {
