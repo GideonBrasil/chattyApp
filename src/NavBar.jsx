@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function NavBar({ clientCount }) {
   return (
@@ -12,5 +13,9 @@ function NavBar({ clientCount }) {
     </nav>
   );
 }
+
+NavBar.propTypes = {
+  clientCount: PropTypes.number
+};
 
 export default NavBar;

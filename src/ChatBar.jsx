@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function ChatBar({ currentUser, handleSubmitCreator, handleChangeUsername }) {
   return (
@@ -17,5 +18,11 @@ function ChatBar({ currentUser, handleSubmitCreator, handleChangeUsername }) {
     </footer>
   );
 }
+
+ChatBar.propTypes = {
+  currentUser: PropTypes.string,
+  handleSubmitCreator: PropTypes.func,
+  handleChangeUsername: PropTypes.func
+};
 
 export default ChatBar;

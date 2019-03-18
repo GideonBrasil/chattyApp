@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export function Message({ message: { content, username, color, id } }) {
   let imageArray = content.match(/(https?:\/\/.*\.(?:png|jpg|gif))/gi) || [];
@@ -20,6 +21,13 @@ export function Message({ message: { content, username, color, id } }) {
   );
 }
 
+Message.propTypes = {
+  content: PropTypes.string,
+  username: PropTypes.string,
+  color: PropTypes.string,
+  id: PropTypes.string
+};
+
 export function Notification({ message: { username, oldUser } }) {
   return (
     <div className="message system">
@@ -27,3 +35,8 @@ export function Notification({ message: { username, oldUser } }) {
     </div>
   );
 }
+
+Notification.proptype = {
+  username: PropTypes.string,
+  olduser: PropTypes.string
+};

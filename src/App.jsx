@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import NavBar from './NavBar.jsx';
-import { Message, Notification } from './Message.jsx';
-import ChatBar from './ChatBar.jsx';
+import React, { Component } from "react";
+import NavBar from "./NavBar.jsx";
+import { Message, Notification } from "./Message.jsx";
+import ChatBar from "./ChatBar.jsx";
 
 //loading function for the initial loading of the app
 function Loading() {
   return (
     <nav className="navbar">
-      <a href='/' className="navbar-brand">
+      <a href="/" className="navbar-brand">
         Chatty is Loading...
       </a>
     </nav>
@@ -22,8 +22,8 @@ export default class App extends Component {
       loading: true,
       messages: [],
       clients: 0,
-      color: '',
-      currentUser: 'Anonymous'
+      color: "",
+      currentUser: "Anonymous"
     };
     this.handleSubmitCreator = this.handleSubmitCreator.bind(this);
     this.addNewNotification = this.addNewNotification.bind(this);
@@ -31,11 +31,11 @@ export default class App extends Component {
 
   //handles events for message input
   handleSubmitCreator = event => {
-    if (event.key == 'Enter') {
+    if (event.key == "Enter") {
       event.preventDefault();
       const newMessageInput = event.target;
       this.addNewMessage(newMessageInput.value);
-      newMessageInput.value = '';
+      newMessageInput.value = "";
     }
   };
 
@@ -43,7 +43,7 @@ export default class App extends Component {
     const newMessage = {
       username: this.state.currentUser,
       content,
-      type: 'postMessage'
+      type: "postMessage"
     };
 
     this.socket.send(JSON.stringify(newMessage));
@@ -53,7 +53,7 @@ export default class App extends Component {
     const newNotification = {
       username: this.state.currentUser,
       oldUser,
-      type: 'postNotification'
+      type: "postNotification"
     };
 
     this.socket.send(JSON.stringify(newNotification));
@@ -71,7 +71,7 @@ export default class App extends Component {
 
   //waits for the DOM to load before loading virtual DOM
   componentDidMount() {
-    this.socket = new WebSocket('ws://localhost:3001');
+    this.socket = new WebSocket("ws://localhost:3001");
 
     this.socket.onmessage = event => {
       let objectMessage = JSON.parse(event.data);
@@ -108,7 +108,7 @@ export default class App extends Component {
         {this.state.messages.map(message => {
           // deals with incoming messages and notifications
           switch (message.type) {
-            case 'incomingMessage':
+            case "incomingMessage":
               return (
                 <Message
                   key={message.id}
@@ -116,10 +116,12 @@ export default class App extends Component {
                   color={this.state.color}
                 />
               );
-            case 'incomingNotification':
+              break;
+            case "incomingNotification":
               return <Notification key={message.id} message={message} />;
+              break;
             default:
-              console.error('You shouldn't be sending messages here', message);
+              console.error("You shouldnt be sending messages here", message);
               break;
           }
         })}
